@@ -6,10 +6,15 @@ class Email {
     try {
     const transporter = nodemailer.createTransport(smtpTransport({
       service: 'gmail',
+      secure: true,
       auth: {
         user: process.env.Email_User,
         pass: process.env.Password_User,
-      }
+      },
+      tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false
+    }
     }));
 
     const mailOptions = {
