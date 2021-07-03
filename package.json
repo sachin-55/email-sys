@@ -1,0 +1,61 @@
+{
+  "name": "email-sys",
+  "version": "1.0.0",
+  "description": "For sending email.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js --exec babel-node --async-stack-traces",
+    "build": "babel -d ./build ./src --copy-files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sachin-55/email-sys.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "email"
+  ],
+  "author": "sachin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sachin-55/email-sys/issues"
+  },
+  "homepage": "https://github.com/sachin-55/email-sys#readme",
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "transform-class-properties"
+    ]
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "node": "^16.4.0",
+    "nodemailer": "^6.6.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/compat-data": "^7.14.7",
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "nodemon": "^2.0.9"
+  }
+}
