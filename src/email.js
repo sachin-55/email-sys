@@ -1,15 +1,16 @@
 import nodemailer from 'nodemailer';
+import smtpTransport from 'nodemailer-smtp-transport';
 
 class Email {
   static send = async (senderName, sendTo, subject, text, html ) =>{
     try {
-    const transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport(smtpTransport({
       service: 'gmail',
       auth: {
         user: process.env.Email_User,
         pass: process.env.Password_User,
       }
-    });
+    }));
 
     const mailOptions = {
       from: `${senderName} <noreply@gmail.com>`,
