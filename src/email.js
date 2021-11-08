@@ -1,35 +1,22 @@
-import nodemailer from 'nodemailer';
-import smtpTransport from 'nodemailer-smtp-transport';
+import sendGridMailer from '@sendgrid/mail';
 
 class Email {
   static send = async (senderName, sendTo, subject, text, html ) =>{
     try {
-    const transporter = nodemailer.createTransport(smtpTransport({
-      service: 'gmail',
-      secure: true,
-      auth: {
-        user: process.env.Email_User,
-        pass: process.env.Password_User,
-      },
-      tls: {
-        // do not fail on invalid certs
-        rejectUnauthorized: false
-    }
-    }));
+    sendGridMailer.setApiKey(process.env.SENDGRID_PASSWORD)
 
     const mailOptions = {
-      from: `${senderName} <noreply@gmail.com>`,
+      from: `${senderName} <sachinbhattarai.404@gmail.com>`,
       to: sendTo,
       subject,
       text,
       html, 
     };
 
-  const email =  await transporter.sendMail(mailOptions);
+    const email =  await sendGridMailer.send(mailOptions);
     return email;
-
-   
   } catch (error) {
+    console.log('Error = ', error);
     throw error;
   }
 }
